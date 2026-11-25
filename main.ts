@@ -1,12 +1,4 @@
-// A tiny stack VM for make.fun's tiny-stack-vm-01: runs every program in the
-// input dir (program.bin + input.bin) and writes stdout.bin + exit.txt per id.
-// Implements the ISA's ordinary rules and every hard rule it lists: exact
-// 32-bit wrapping multiply, unsigned DIV/MOD/LT, the -2147483648 edge cases,
-// shift counts masked to 5 bits, PUSH8 sign extension, EXIT's low byte, and
-// all ten traps with their own exit codes, keeping output written before a trap.
-// Kept small and fast: one flat dispatch loop, fixed-size typed arrays, no
-// allocation in the hot path, so the whole 40-program set finishes well
-// inside the 60-second wall.
+// Tiny stack VM: runs every program in the input dir, writes stdout.bin + exit.txt per id. Full ISA + all ten traps.
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
